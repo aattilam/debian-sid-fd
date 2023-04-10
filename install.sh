@@ -59,7 +59,7 @@ flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flat
 
 echo "Configuring Network Manager"
 
-sed -i '/managed=fasle/d' /etc/NetworkManager/NetworkManager.conf
+sed -i '/managed=false/d' /etc/NetworkManager/NetworkManager.conf
 echo "managed=true" >> /etc/NetworkManager/NetworkManager.conf
 
 
