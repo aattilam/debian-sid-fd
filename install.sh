@@ -16,20 +16,20 @@ rm /etc/apt/sources.list
 touch /etc/apt/sources.list
 
 cat <<EOT >> /etc/apt/sources.list
-deb http://deb.debian.org/debian bullseye main contrib non-free
-deb-src http://deb.debian.org/debian bullseye main contrib non-free
+deb http://deb.debian.org/debian stable main contrib non-free
+deb-src http://deb.debian.org/debian stable main contrib non-free
 
-deb http://deb.debian.org/debian-security/ bullseye-security main contrib non-free
-deb-src http://deb.debian.org/debian-security/ bullseye-security main contrib non-free
+deb http://deb.debian.org/debian-security/ stable-security main contrib non-free
+deb-src http://deb.debian.org/debian-security/ stable-security main contrib non-free
 
-deb http://deb.debian.org/debian bullseye-updates main contrib non-free
-deb-src http://deb.debian.org/debian bullseye-updates main contrib non-free
+deb http://deb.debian.org/debian stable-updates main contrib non-free
+deb-src http://deb.debian.org/debian stable-updates main contrib non-free
 
 deb http://deb.debian.org/debian sid main contrib non-free non-free-firmware
 deb-src http://deb.debian.org/debian sid main contrib non-free non-free-firmware
 
-deb http://deb.debian.org/debian bullseye-backports main contrib non-free
-deb-src http://deb.debian.org/debian bullseye-backports main contrib non-free
+deb http://deb.debian.org/debian stable-backports main contrib non-free
+deb-src http://deb.debian.org/debian stable-backports main contrib non-free
 EOT
 
 echo "Setting repository priority"
@@ -39,11 +39,11 @@ Pin: release a=sid
 Pin-Priority: 100
 
 package: *
-Pin: release a=bullseye-backports
+Pin: release a=stable-backports
 Pin-Priority: 90
 
 package: *
-Pin: release a=bullseye
+Pin: release a=stable
 Pin-Priority: 80
 EOT
 
