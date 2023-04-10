@@ -54,7 +54,7 @@ apt update && apt upgrade -y && apt autoremove -y
 
 echo "Installing gnome and default software"
 
-apt install gnome-core libreoffice gnome-tweaks firefox-esr flatpak gnome-software-plugin-flatpak git nala vlc firmware-misc-nonfree -y
+apt install gnome-core libreoffice libreoffice-gnome gnome-tweaks firefox-esr flatpak gnome-software-plugin-flatpak git nala vlc qgnomeplatform-qt5 adwaita-qt adwaita-qt6 firmware-misc-nonfree -y
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
 echo "Configuring Network Manager"
