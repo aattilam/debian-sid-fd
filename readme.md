@@ -20,3 +20,4 @@
 * lendevourOS like package selection
 * live iso
 * gui installer
+* possible debian distro? (rly far away prob not :)
