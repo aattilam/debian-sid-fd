@@ -15,3 +15,8 @@
 * fixed typos (networkmanager)
 * changed repo prio, now follows debian's next stable release
 * added extra packages from @Pisti404's fork (https://github.com/Pisti404/debian-scripts)
+
+## Future plans (in time order)
+* lendevourOS like package selection
+* live iso
+* gui installer
