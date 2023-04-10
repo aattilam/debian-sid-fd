@@ -36,10 +36,6 @@ Pin: release a=sid
 Pin-Priority: 100
 
 package: *
-Pin: release a=stable-backports
-Pin-Priority: 90
-
-package: *
 Pin: release a=stable
 Pin-Priority: 80
 EOT
