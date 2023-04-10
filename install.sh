@@ -27,9 +27,6 @@ deb-src http://deb.debian.org/debian stable-updates main contrib non-free
 
 deb http://deb.debian.org/debian sid main contrib non-free non-free-firmware
 deb-src http://deb.debian.org/debian sid main contrib non-free non-free-firmware
-
-deb http://deb.debian.org/debian stable-backports main contrib non-free
-deb-src http://deb.debian.org/debian stable-backports main contrib non-free
 EOT
 
 echo "Setting repository priority"
@@ -115,7 +112,7 @@ git clone --depth=1 https://github.com/realmazharhussain/gdm-tools.git
 cd gdm-tools
 chmod +x install.sh
 ./install.sh
-set-gdm-theme set -b </usr/share/themes/gdmwp.jpg>
+set-gdm-theme set -b /usr/share/themes/gdmwp.jpg
 cd ..
 rm -r gdm-tools
 
