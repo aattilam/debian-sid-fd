@@ -10,3 +10,7 @@
 ### cd debian-sid-fd
 ### chmod+x install.sh
 ### sudo ./install.sh
+
+## Changelog:
+* fixed typos (networkmanager)
+* changed repo prio, now follows debian's next stable release
