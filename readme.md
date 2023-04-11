@@ -1,7 +1,7 @@
 # Debian sid install script
 
 ## Steps to run:
-1. Install Debian stable from non-free firmware image.
+1. Install Debian stable from non-free firmware image. https://cdimage.debian.org/cdimage/unofficial/non-free/cd-including-firmware/current/amd64/iso-cd/
 2. Setup a base system
 3. Reboot
 4. Run the install script
