@@ -19,7 +19,7 @@ https://cdimage.debian.org/cdimage/unofficial/non-free/cd-including-firmware/cur
 * removed gdm customization
 
 ## Future plans (in time order)
-* lendevourOS like package selection
+* endevourOS like package selection
 * live iso
 * gui installer
 * possible debian distro? (rly far away prob not :)
