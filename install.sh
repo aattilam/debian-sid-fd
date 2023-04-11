@@ -108,17 +108,14 @@ chmod +x install.sh
 cd ..
 rm -r grub2-themes
 
-curl https://r4.wallpaperflare.com/wallpaper/138/915/764/debian-logo-red-spiral-logo-wallpaper-e990484de1aaaddb3607f81f00f1a6ed.jpg >> /usr/share/themes/gdmwp.jpg
-
 apt install libglib2.0-dev dconf-cli
 git clone --depth=1 https://github.com/realmazharhussain/gdm-tools.git
 cd gdm-tools
 chmod +x install.sh
 ./install.sh
-set-gdm-theme set -b /usr/share/themes/gdmwp.jpg
 cd ..
 rm -r gdm-tools
-
+rm -r debian-sid-fd
 
 echo "Remove unnecessary packages"
 apt autoremove -y
