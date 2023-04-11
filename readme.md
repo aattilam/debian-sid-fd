@@ -2,7 +2,7 @@
 
 ## Steps to run:
 1. Install Debian stable from non-free firmware image
-* https://cdimage.debian.org/cdimage/unofficial/non-free/cd-including-firmware/current/amd64/iso-cd/
+https://cdimage.debian.org/cdimage/unofficial/non-free/cd-including-firmware/current/amd64/iso-cd/
 3. Setup a base system
 4. Reboot
 5. Run the install script
