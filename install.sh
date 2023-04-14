@@ -72,7 +72,7 @@ while true; do
     read -p "Do you want to install wine and lutris? " yn
     case $yn in
         [Yy]* ) dpkg --add-architecture i386; apt update; apt install wine winetricks lutris -y; break;;
-        [Nn]* ) exit;;
+        [Nn]* ) break;;
         * ) echo "Please answer yes or no.";;
     esac
 done
@@ -81,7 +81,7 @@ while true; do
     read -p "Do you want to install Steam? " yn
     case $yn in
         [Yy]* ) dpkg --add-architecture i386; apt install steam -y; break;;
-        [Nn]* ) exit;;
+        [Nn]* ) break;;
         * ) echo "Please answer yes or no.";;
     esac
 done
@@ -90,7 +90,7 @@ while true; do
     read -p "Are you running this script on a desktop? " yn
     case $yn in
         [Yy]* ) echo "Adding lqx-kernel repository"; curl 'https://liquorix.net/install-liquorix.sh' -o liquorix.sh; chmod +x liquorix.sh; ./liquorix.sh; rm liqourix.sh; break;;
-        [Nn]* ) apt install tlp -y; systemct enable tlp;;
+        [Nn]* ) apt install tlp -y; systemctl enable tlp;;
         * ) echo "Please answer yes or no.";;
     esac
 done
