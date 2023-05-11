@@ -115,6 +115,7 @@ chmod +x install.sh
 ./install.sh
 cd ..
 rm -r gdm-tools
+cd ..
 rm -r debian-sid-fd
 
 echo "Remove unnecessary packages"
