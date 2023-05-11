@@ -25,8 +25,8 @@ deb-src http://deb.debian.org/debian-security/ stable-security main contrib non-
 deb http://deb.debian.org/debian stable-updates main contrib non-free
 deb-src http://deb.debian.org/debian stable-updates main contrib non-free
 
-deb http://deb.debian.org/debian testing main contrib non-free
-deb-src http://deb.debian.org/debian testing main contrib non-free
+deb http://deb.debian.org/debian testing main contrib non-free non-free-firmware
+deb-src http://deb.debian.org/debian testing main contrib non-free non-free-firmware
 
 deb http://deb.debian.org/debian sid main contrib non-free non-free-firmware
 deb-src http://deb.debian.org/debian sid main contrib non-free non-free-firmware
