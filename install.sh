@@ -8,7 +8,7 @@ fi
 
 
 apt update && apt upgrade -y
-apt install curl git -y
+apt install curl git laptop-detect -y
 
 echo "Recreating sources list"
 
@@ -51,7 +51,7 @@ clear
 echo "Installing gnome and default software"
 sleep 2
 apt update
-apt install gnome-core libreoffice libreoffice-gnome gnome-tweaks flatpak gnome-software-plugin-flatpak git nala vlc qgnomeplatform-qt5 adwaita-qt adwaita-qt6 firmware-linux-nonfree firmware-misc-nonfree laptop-detect -y
+apt install gnome-core libreoffice libreoffice-gnome gnome-tweaks flatpak gnome-software-plugin-flatpak git nala vlc qgnomeplatform-qt5 adwaita-qt adwaita-qt6 firmware-linux-nonfree firmware-misc-nonfree -y
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak install flathub org.mozilla.firefox
 dpkg --add-architecture i386
