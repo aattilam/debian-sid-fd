@@ -47,20 +47,18 @@ Pin: release a=stable
 Pin-Priority: 80
 EOT
 
-echo "Upgrading system"
-
-apt update && apt upgrade -y && apt autoremove -y 
-
-
+clear
 echo "Installing gnome and default software"
-
+sleep 2
+apt update
 apt install gnome-core libreoffice libreoffice-gnome gnome-tweaks firefox flatpak gnome-software-plugin-flatpak git nala vlc qgnomeplatform-qt5 adwaita-qt adwaita-qt6 firmware-linux-nonfree firmware-misc-nonfree -y
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 
-echo "Configuring Network Manager"
+#echo "Configuring Network Manager"
+#sed -i '/managed=false/d' /etc/NetworkManager/NetworkManager.conf
+#echo "managed=true" >> /etc/NetworkManager/NetworkManager.conf
 
-sed -i '/managed=false/d' /etc/NetworkManager/NetworkManager.conf
-echo "managed=true" >> /etc/NetworkManager/NetworkManager.conf
+clear
 
 while true; do
     read -p "Do you want to install wine and lutris? " yn
@@ -70,6 +68,8 @@ while true; do
         * ) echo "Please answer yes or no.";;
     esac
 done
+
+clear
 
 while true; do
     read -p "Do you want to install Steam? " yn
@@ -91,10 +91,13 @@ done
 
 if [[ $(lspci -nn | egrep -i "3d|display|vga" | grep "NVIDIA") == *NVIDIA* ]]; then
   echo "Found NVIDIA device, installing driver."
-  apt install nvidia-driver -y
+  apt install nvidia-driver -y; clear
 fi
 
+clear
+
 echo "Installing customizations"
+sleep 2
 git clone https://github.com/vinceliuice/grub2-themes.git
 cd grub2-themes
 chmod +x install.sh
@@ -112,7 +115,10 @@ rm -r gdm-tools
 cd ..
 rm -r debian-sid-fd
 
-echo "Remove unnecessary packages"
-apt autoremove -y
+clear
+
+echo "Upgrading system and removing unnecessary packages"
+sleep 2
+apt upgrade -y; apt autoremove -y; clear
 
 echo "Done, please reboot your system."
