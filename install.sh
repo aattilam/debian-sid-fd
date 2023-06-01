@@ -95,7 +95,7 @@ chmod +x install.sh
 cd ..
 rm -r grub2-themes
 
-apt install libglib2.0-dev dconf-cli
+apt install libglib2.0-dev dconf-cli -y
 git clone --depth=1 https://github.com/realmazharhussain/gdm-tools.git
 cd gdm-tools
 chmod +x install.sh
