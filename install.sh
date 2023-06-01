@@ -52,7 +52,7 @@ echo "Installing gnome and default software"
 sleep 2
 apt update
 apt install gnome-core --no-install-recommends -y
-apt install libreoffice libreoffice-gnome gnome-tweaks flatpak gnome-software-plugin-flatpak plymouth git nala vlc qgnomeplatform-qt5 adwaita-qt adwaita-qt6 firmware-linux-nonfree firmware-misc-nonfree -y
+apt install libreoffice libreoffice-gnome gnome-tweaks flatpak gnome-software-plugin-flatpak plymouth plymouth-themes git nala vlc qgnomeplatform-qt5 adwaita-qt adwaita-qt6 firmware-linux-nonfree firmware-misc-nonfree -y
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak install flathub org.mozilla.firefox -y
 dpkg --add-architecture i386
