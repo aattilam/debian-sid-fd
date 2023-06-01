@@ -52,9 +52,7 @@ echo "Installing gnome and default software"
 sleep 2
 apt update
 apt install gnome-core --no-install-recommends -y
-apt install libreoffice libreoffice-gnome gnome-tweaks flatpak network-manager gnome-software-plugin-flatpak plymouth plymouth-themes git nala vlc qgnomeplatform-qt5 adwaita-qt adwaita-qt6 firmware-linux-nonfree firmware-misc-nonfree -y
-flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-flatpak install flathub org.mozilla.firefox -y
+apt install libreoffice libreoffice-gnome gnome-tweaks flatpak network-manager gnome-software-plugin-flatpak chrome-gnome-shell intel-microcode amd-microcode plymouth plymouth-themes git nala vlc qgnomeplatform-qt5 adwaita-qt adwaita-qt6 firmware-linux-nonfree firefox fonts-crosextra-carlito fonts-crosextra-caladea firmware-misc-nonfree ttf-mscorefonts-installer rar unrar libavcodec-extra gstreamer1.0-libav gstreamer1.0-plugins-ugly gstreamer1.0-vaapi -y
 dpkg --add-architecture i386
 apt install wine winetricks -y
 
@@ -94,10 +92,18 @@ if [[ $(lspci -nn | egrep -i "3d|display|vga" | grep "NVIDIA") == *NVIDIA* ]]; t
   apt install nvidia-driver -y; clear
 fi
 
+lspci_output_amd=$(lspci)
+if echo "$lspci_output_amd" | grep -i "AMD" | grep -i "VGA" >/dev/null; then
+  apt install libdrm-amdgpu1 xserver-xorg-video-amdgpu mesa-vulkan-drivers libvulkan1 vulkan-tools vulkan-validationlayers
+fi
+
 clear
 
 echo "Installing customizations"
 sleep 2
+
+gsettings set org.gnome.desktop.wm.preferences button-layout ':minimize,maximize,close'
+
 git clone https://github.com/vinceliuice/grub2-themes.git
 cd grub2-themes
 chmod +x install.sh
