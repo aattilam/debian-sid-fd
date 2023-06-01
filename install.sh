@@ -62,12 +62,6 @@ echo "Configuring Network Manager"
 sed -i '/managed=false/d' /etc/NetworkManager/NetworkManager.conf
 echo "managed=true" >> /etc/NetworkManager/NetworkManager.conf
 
-
-echo "Installing firmware"
-git clone https://git.kernel.org/pub/scm/linux/kernel/git/firmware/linux-firmware.git/
-cp -r linux-firmware/* /usr/lib/firmware
-rm -r linux-firmware
-
 while true; do
     read -p "Do you want to install wine and lutris? " yn
     case $yn in
