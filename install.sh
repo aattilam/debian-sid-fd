@@ -52,15 +52,24 @@ echo "Installing gnome and default software"
 sleep 2
 apt update
 apt install gnome-core --no-install-recommends -y
-apt install libreoffice libreoffice-gnome gnome-tweaks flatpak gnome-software-plugin-flatpak plymouth plymouth-themes git nala vlc qgnomeplatform-qt5 adwaita-qt adwaita-qt6 firmware-linux-nonfree firmware-misc-nonfree -y
+apt install libreoffice libreoffice-gnome gnome-tweaks flatpak network-manager gnome-software-plugin-flatpak plymouth plymouth-themes git nala vlc qgnomeplatform-qt5 adwaita-qt adwaita-qt6 firmware-linux-nonfree firmware-misc-nonfree -y
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak install flathub org.mozilla.firefox -y
 dpkg --add-architecture i386
 apt install wine winetricks -y
 
-echo "Configuring Network Manager"
-sed -i '/managed=false/d' /etc/NetworkManager/NetworkManager.conf
-echo "managed=true" >> /etc/NetworkManager/NetworkManager.conf
+echo "Configuring Networking"
+
+cat <<EOT >> /etc/network/intefaces
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+source /etc/network/interfaces.d
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+EOT
 
 clear
 
