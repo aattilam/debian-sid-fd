@@ -51,8 +51,11 @@ clear
 echo "Installing gnome and default software"
 sleep 2
 apt update
-apt install gnome-core libreoffice libreoffice-gnome gnome-tweaks firefox flatpak gnome-software-plugin-flatpak git nala vlc qgnomeplatform-qt5 adwaita-qt adwaita-qt6 firmware-linux-nonfree firmware-misc-nonfree -y
+apt install gnome-core libreoffice libreoffice-gnome gnome-tweaks flatpak gnome-software-plugin-flatpak git nala vlc qgnomeplatform-qt5 adwaita-qt adwaita-qt6 firmware-linux-nonfree firmware-misc-nonfree laptop-detect -y
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+flatpak install flathub org.mozilla.firefox
+dpkg --add-architecture i386
+apt install wine winetricks
 
 #echo "Configuring Network Manager"
 #sed -i '/managed=false/d' /etc/NetworkManager/NetworkManager.conf
@@ -61,33 +64,20 @@ flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flat
 clear
 
 while true; do
-    read -p "Do you want to install wine and lutris? " yn
+    read -p "Do you want to install Steam and Lutris? " yn
     case $yn in
-        [Yy]* ) dpkg --add-architecture i386; apt update; apt install wine winetricks lutris -y; break;;
+        [Yy]* ) apt install steam-installer lutris -y; break;;
         [Nn]* ) break;;
         * ) echo "Please answer yes or no.";;
     esac
 done
 
-clear
-
-while true; do
-    read -p "Do you want to install Steam? " yn
-    case $yn in
-        [Yy]* ) dpkg --add-architecture i386; apt install steam -y; break;;
-        [Nn]* ) break;;
-        * ) echo "Please answer yes or no.";;
-    esac
-done
-
-while true; do
-    read -p "Are you running this script on a desktop? " yn
-    case $yn in
-        [Yy]* ) echo "Adding lqx-kernel repository"; curl 'https://liquorix.net/install-liquorix.sh' -o liquorix.sh; chmod +x liquorix.sh; ./liquorix.sh; rm liqourix.sh; break;;
-        [Nn]* ) apt install tlp -y; systemctl enable tlp;;
-        * ) echo "Please answer yes or no.";;
-    esac
-done
+laptopoutput=$(laptop-detect -v)
+if [[ $laptopoutput == *"Laptop detected"* ]]; then
+   apt install tlp tlp-rdw -y; systemctl enable tlp
+else
+   echo "Adding lqx-kernel repository"; curl 'https://liquorix.net/install-liquorix.sh' -o liquorix.sh; chmod +x liquorix.sh; ./liquorix.sh; rm liqourix.sh
+fi
 
 if [[ $(lspci -nn | egrep -i "3d|display|vga" | grep "NVIDIA") == *NVIDIA* ]]; then
   echo "Found NVIDIA device, installing driver."
