@@ -66,7 +66,7 @@ clear
 while true; do
     read -p "Do you want to install Steam and Lutris? " yn
     case $yn in
-        [Yy]* ) apt install steam-installer lutris -y; break;;
+        [Yy]* ) apt install steam lutris -y; break;;
         [Nn]* ) break;;
         * ) echo "Please answer yes or no.";;
     esac
