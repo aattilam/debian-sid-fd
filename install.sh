@@ -58,7 +58,7 @@ apt install wine winetricks -y
 
 echo "Configuring Networking"
 
-cat <<EOT >> /etc/network/intefaces
+cat <<EOT >> /etc/network/interfaces
 # This file describes the network interfaces available on your system
 # and how to activate them. For more information, see interfaces(5).
 
