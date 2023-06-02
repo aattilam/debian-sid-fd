@@ -114,7 +114,6 @@ cd ..
 rm -r gdm-tools
 cd ..
 rm -r debian-sid-fd
-
 clear
 
 while true; do
