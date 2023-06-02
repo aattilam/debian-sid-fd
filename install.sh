@@ -125,6 +125,7 @@ clear
 
 echo "Upgrading system and removing unnecessary packages"
 sleep 2
-apt upgrade -y; apt autoremove -y; clear
+apt upgrade -y; apt autoremove -y
+sudo update-initramfs -u; clear
 
 echo "Done, please reboot your system."
