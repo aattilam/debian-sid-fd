@@ -28,14 +28,14 @@ deb-src http://deb.debian.org/debian stable-updates main contrib non-free
 deb http://deb.debian.org/debian testing main contrib non-free non-free-firmware
 deb-src http://deb.debian.org/debian testing main contrib non-free non-free-firmware
 
-deb http://deb.debian.org/debian unstable main contrib non-free non-free-firmware
-deb-src http://deb.debian.org/debian unstable main contrib non-free non-free-firmware
+deb http://deb.debian.org/debian sid main contrib non-free non-free-firmware
+deb-src http://deb.debian.org/debian sid main contrib non-free non-free-firmware
 EOT
 
 echo "Setting repository priority"
 cat <<EOT >> /etc/apt/preferences.d/default
 package: *
-Pin: release a=unstable
+Pin: release a=sid
 Pin-Priority: 100
 
 package: *
@@ -52,7 +52,7 @@ echo "Installing gnome and default software"
 sleep 2
 apt update
 apt install gnome-core --no-install-recommends -y
-apt install libreoffice libreoffice-gnome gnome-tweaks dconf dconf-cli software-properties-gtk flatpak network-manager gnome-software-plugin-flatpak chrome-gnome-shell intel-microcode amd64-microcode plymouth plymouth-themes git nala vlc qgnomeplatform-qt5 adwaita-qt adwaita-qt6 firmware-linux-nonfree firefox fonts-crosextra-carlito fonts-crosextra-caladea firmware-misc-nonfree ttf-mscorefonts-installer rar unrar libavcodec-extra gstreamer1.0-libav gstreamer1.0-plugins-ugly gstreamer1.0-vaapi -y
+apt install libreoffice libreoffice-gnome gnome-tweaks dconf-cli software-properties-gtk flatpak network-manager gnome-software-plugin-flatpak chrome-gnome-shell intel-microcode amd64-microcode plymouth plymouth-themes git nala vlc qgnomeplatform-qt5 adwaita-qt adwaita-qt6 firmware-linux-nonfree firefox fonts-crosextra-carlito fonts-crosextra-caladea firmware-misc-nonfree ttf-mscorefonts-installer rar unrar libavcodec-extra gstreamer1.0-libav gstreamer1.0-plugins-ugly gstreamer1.0-vaapi -y
 dpkg --add-architecture i386
 apt install wine winetricks -y
 
