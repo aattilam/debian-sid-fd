@@ -28,14 +28,14 @@ deb-src http://deb.debian.org/debian stable-updates main contrib non-free
 deb http://deb.debian.org/debian testing main contrib non-free non-free-firmware
 deb-src http://deb.debian.org/debian testing main contrib non-free non-free-firmware
 
-deb http://deb.debian.org/debian sid main contrib non-free non-free-firmware
-deb-src http://deb.debian.org/debian sid main contrib non-free non-free-firmware
+deb http://deb.debian.org/debian unstable main contrib non-free non-free-firmware
+deb-src http://deb.debian.org/debian unstable main contrib non-free non-free-firmware
 EOT
 
 echo "Setting repository priority"
 cat <<EOT >> /etc/apt/preferences.d/default
 package: *
-Pin: release a=sid
+Pin: release a=unstable
 Pin-Priority: 100
 
 package: *
