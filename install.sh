@@ -74,15 +74,6 @@ EOT
 
 clear
 
-while true; do
-    read -p "Do you want to install Steam and Lutris? " yn
-    case $yn in
-        [Yy]* ) apt install steam lutris -y; break;;
-        [Nn]* ) break;;
-        * ) echo "Please answer yes or no.";;
-    esac
-done
-
 laptopoutput=$(laptop-detect -v)
 if [[ $laptopoutput == *"Laptop detected"* ]]; then
    apt install tlp tlp-rdw -y; systemctl enable tlp
@@ -125,6 +116,15 @@ cd ..
 rm -r debian-sid-fd
 
 clear
+
+while true; do
+    read -p "Do you want to install Steam and Lutris? " yn
+    case $yn in
+        [Yy]* ) apt install steam lutris -y; clear; break;;
+        [Nn]* ) clear; break;;
+        * ) echo "Please answer yes or no.";;
+    esac
+done
 
 echo "Upgrading system and removing unnecessary packages"
 sleep 2
