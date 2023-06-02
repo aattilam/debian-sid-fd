@@ -52,7 +52,7 @@ echo "Installing gnome and default software"
 sleep 2
 apt update
 apt install gnome-core --no-install-recommends -y
-apt install libreoffice libreoffice-gnome gnome-tweaks flatpak network-manager gnome-software-plugin-flatpak chrome-gnome-shell intel-microcode amd64-microcode plymouth plymouth-themes git nala vlc qgnomeplatform-qt5 adwaita-qt adwaita-qt6 firmware-linux-nonfree firefox fonts-crosextra-carlito fonts-crosextra-caladea firmware-misc-nonfree ttf-mscorefonts-installer rar unrar libavcodec-extra gstreamer1.0-libav gstreamer1.0-plugins-ugly gstreamer1.0-vaapi -y
+apt install libreoffice libreoffice-gnome gnome-tweaks dconf dconf-cli software-properties-gtk flatpak network-manager gnome-software-plugin-flatpak chrome-gnome-shell intel-microcode amd64-microcode plymouth plymouth-themes git nala vlc qgnomeplatform-qt5 adwaita-qt adwaita-qt6 firmware-linux-nonfree firefox fonts-crosextra-carlito fonts-crosextra-caladea firmware-misc-nonfree ttf-mscorefonts-installer rar unrar libavcodec-extra gstreamer1.0-libav gstreamer1.0-plugins-ugly gstreamer1.0-vaapi -y
 dpkg --add-architecture i386
 apt install wine winetricks -y
 
@@ -102,7 +102,7 @@ clear
 echo "Installing customizations"
 sleep 2
 
-gsettings set org.gnome.desktop.wm.preferences button-layout ':minimize,maximize,close'
+dconf write /org/gnome/desktop/wm/preferences/button-layout "'minimize,maximize,close'"
 
 git clone https://github.com/vinceliuice/grub2-themes.git
 cd grub2-themes
@@ -111,7 +111,7 @@ chmod +x install.sh
 cd ..
 rm -r grub2-themes
 
-apt install libglib2.0-dev dconf-cli -y
+apt install libglib2.0-dev -y
 git clone --depth=1 https://github.com/realmazharhussain/gdm-tools.git
 cd gdm-tools
 chmod +x install.sh
