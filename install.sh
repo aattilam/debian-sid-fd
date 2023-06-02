@@ -58,11 +58,13 @@ apt install wine winetricks -y
 
 echo "Configuring Networking"
 
+rm /etc/network/interfaces
+touch /etc/network/interfaces
 cat <<EOT >> /etc/network/interfaces
 # This file describes the network interfaces available on your system
 # and how to activate them. For more information, see interfaces(5).
 
-source /etc/network/interfaces.d
+source /etc/network/interfaces.d/*
 
 # The loopback network interface
 auto lo
@@ -101,8 +103,6 @@ clear
 
 echo "Installing customizations"
 sleep 2
-
-dconf write /org/gnome/desktop/wm/preferences/button-layout "'minimize,maximize,close'"
 
 git clone https://github.com/vinceliuice/grub2-themes.git
 cd grub2-themes
