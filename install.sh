@@ -6,6 +6,8 @@ if [ "$(id -u)" != "0" ]; then
    exit 1
 fi
 
+sudo_user="$SUDO_USER"
+
 apt update && apt upgrade -y
 apt install curl git laptop-detect -y
 
@@ -96,6 +98,17 @@ echo "Installing customizations"
 sleep 2
 
 cp postinst.sh /tmp/postinst.sh
+cp dconf-settings.ini /tmp/dconf-settings.ini
+
+mkdir -p /home/$sudo_user/.config/autostart
+echo "[Desktop Entry]
+Type=Application
+Exec=/bin/bash /tmp/postinst.sh
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[en_US]=Post Installation Script
+Name=Post Installation Script" > $HOME/.config/autostart/postinst.desktop
 
 plymouth-set-default-theme spinner
 sed -i 's/^GRUB_CMDLINE_LINUX_DEFAULT=.*/GRUB_CMDLINE_LINUX_DEFAULT="quiet splash splash-delay=7000"/' /etc/default/grub
