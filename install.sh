@@ -6,11 +6,8 @@ if [ "$(id -u)" != "0" ]; then
    exit 1
 fi
 
-
 apt update && apt upgrade -y
 apt install curl git laptop-detect -y
-
-sudo_user="$SUDO_USER"
 
 echo "Recreating sources list"
 
