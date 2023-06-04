@@ -109,7 +109,7 @@ Hidden=false
 NoDisplay=false
 X-GNOME-Autostart-enabled=true
 Name[en_US]=Post Installation Script
-Name=Post Installation Script" > $HOME/.config/autostart/postinst.desktop
+Name=Post Installation Script" > $sudo_user/.config/autostart/postinst.desktop
 
 plymouth-set-default-theme spinner
 sed -i 's/^GRUB_CMDLINE_LINUX_DEFAULT=.*/GRUB_CMDLINE_LINUX_DEFAULT="quiet splash splash-delay=7000"/' /etc/default/grub
