@@ -10,6 +10,8 @@ fi
 apt update && apt upgrade -y
 apt install curl git laptop-detect -y
 
+sudo_user="$SUDO_USER"
+
 echo "Recreating sources list"
 
 rm /etc/apt/sources.list
@@ -54,7 +56,7 @@ dpkg --add-architecture i386
 export DEBIAN_FRONTEND=noninteractive
 apt update
 apt install gnome-core --no-install-recommends -y
-apt install libreoffice libreoffice-gnome gnome-tweaks gnome-initial-setup dconf-cli dirmngr software-properties-gtk flatpak network-manager gnome-software-plugin-flatpak chrome-gnome-shell intel-microcode amd64-microcode plymouth plymouth-themes git nala vlc qgnomeplatform-qt5 adwaita-qt adwaita-qt6 firmware-linux-nonfree firefox fonts-crosextra-carlito fonts-crosextra-caladea firmware-misc-nonfree ttf-mscorefonts-installer rar unrar libavcodec-extra gstreamer1.0-libav gstreamer1.0-plugins-ugly gstreamer1.0-vaapi -y
+apt install libreoffice libreoffice-gnome gnome-tweaks timeshift neofetch htop gnome-initial-setup dconf-cli dirmngr software-properties-gtk flatpak network-manager gnome-software-plugin-flatpak chrome-gnome-shell intel-microcode amd64-microcode plymouth plymouth-themes git nala vlc qgnomeplatform-qt5 adwaita-qt adwaita-qt6 firmware-linux-nonfree firefox fonts-crosextra-carlito fonts-crosextra-caladea firmware-misc-nonfree ttf-mscorefonts-installer rar unrar libavcodec-extra gstreamer1.0-libav gstreamer1.0-plugins-ugly gstreamer1.0-vaapi -y
 apt install winetricks wine wine32 wine64 libwine libwine:i386 fonts-wine -y
 
 echo "Configuring Networking"
@@ -96,16 +98,16 @@ clear
 echo "Installing customizations"
 sleep 2
 
-sudo -u $USER touch /home/$USER/debian-sid-fd/postinst.sh
-sudo -u $USER cat > /home/$USER/debian-sid-fd/postinst.sh << EOF
+su -u $SUDO_USER touch /home/$USER/debian-sid-fd/postinst.sh
+su -u $SUDO_USER cat > /home/$USER/debian-sid-fd/postinst.sh << EOF
 #!/bin/bash
-sudo -u $USER dconf load / < dconf-settings.ini
+su -u $SUDO_USER dconf load / < dconf-settings.ini
 gnome-shell --replace &
 
 sed -i '/postinst.sh/d' ~/.bashrc
 EOF
 
-sudo -u $USER echo "/home/$USER/debian-sid-fd/postinst.sh" >> ~/.bashrc
+su -u $SUDO_USER echo "/home/$USER/debian-sid-fd/postinst.sh" >> ~/.bashrc
 
 plymouth-set-default-theme spinner
 sed -i 's/^GRUB_CMDLINE_LINUX_DEFAULT=.*/GRUB_CMDLINE_LINUX_DEFAULT="quiet splash splash-delay=7000"/' /etc/default/grub
