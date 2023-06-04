@@ -98,6 +98,7 @@ echo "Installing customizations"
 sleep 2
 
 cp postinst.sh /tmp/postinst.sh
+chmod +x /tmp/postinst.sh
 cp dconf-settings.ini /tmp/dconf-settings.ini
 
 mkdir -p /home/$sudo_user/.config/autostart
