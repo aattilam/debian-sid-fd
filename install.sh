@@ -98,16 +98,17 @@ clear
 echo "Installing customizations"
 sleep 2
 
-sudo -u $SUDO_USER touch /home/$SUDO_USER/debian-sid-fd/postinst.sh
-sudo -u $SUDO_USER cat > /home/$SUDO_USER/debian-sid-fd/postinst.sh << EOF
+sudo -u $SUDO_USER touch /tmp/postinst.sh
+sudo -u $SUDO_USER cat > /tmp/postinst.sh << EOF
 #!/bin/bash
 dconf load / < dconf-settings.ini
 gnome-shell --replace &
 
 sed -i '/postinst.sh/d' ~/.bashrc
+rm /tmp/postinst.sh
 EOF
-
-sudo -u $SUDO_USER echo "/home/$SUDO_USER/debian-sid-fd/postinst.sh" >> ~/.bashrc
+sudo -u $SUDO_USER chmod +x /tmp/postinst.sh
+sudo -u $SUDO_USER echo "/tmp/postinst.sh" >> ~/.bashrc
 
 plymouth-set-default-theme spinner
 sed -i 's/^GRUB_CMDLINE_LINUX_DEFAULT=.*/GRUB_CMDLINE_LINUX_DEFAULT="quiet splash splash-delay=7000"/' /etc/default/grub
