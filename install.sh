@@ -99,7 +99,7 @@ echo "Installing customizations"
 sleep 2
 
 sudo -u $SUDO_USER touch /home/$SUDO_USER/debian-sid-fd/postinst.sh
-sudo- u $SUDO_USER cat > /home/$SUDO_USER/debian-sid-fd/postinst.sh << EOF
+sudo -u $SUDO_USER cat > /home/$SUDO_USER/debian-sid-fd/postinst.sh << EOF
 #!/bin/bash
 dconf load / < dconf-settings.ini
 gnome-shell --replace &
