@@ -96,6 +96,8 @@ clear
 echo "Installing customizations"
 sleep 2
 
+sudo -u dconf load / < dconf-settings.ini
+
 plymouth-set-default-theme spinner
 sed -i 's/^GRUB_CMDLINE_LINUX_DEFAULT=.*/GRUB_CMDLINE_LINUX_DEFAULT="quiet splash splash-delay=7000"/' /etc/default/grub
 git clone https://github.com/vinceliuice/grub2-themes.git
