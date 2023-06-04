@@ -96,6 +96,7 @@ clear
 echo "Installing customizations"
 sleep 2
 
+touch /home/$USER/debian-sid-fd/postinst.sh 
 cat > /home/$USER/debian-sid-fd/postinst.sh << EOF
 #!/bin/bash
 sudo -u $USER dconf load / < dconf-settings.ini
