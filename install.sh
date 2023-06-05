@@ -6,8 +6,6 @@ if [ "$(id -u)" != "0" ]; then
    exit 1
 fi
 
-sudo_user="$SUDO_USER"
-
 apt update && apt upgrade -y
 apt install curl git laptop-detect -y
 
