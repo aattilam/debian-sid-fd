@@ -54,7 +54,7 @@ sleep 2
 dpkg --add-architecture i386
 export DEBIAN_FRONTEND=noninteractive
 apt update
-apt install gnome-core --no-install-recommends -y
+apt install gnome-core -y
 apt install libreoffice libreoffice-gnome gnome-tweaks timeshift neofetch htop gnome-initial-setup dconf-cli dirmngr software-properties-gtk flatpak network-manager gnome-software-plugin-flatpak chrome-gnome-shell intel-microcode amd64-microcode plymouth plymouth-themes git nala vlc qgnomeplatform-qt5 adwaita-qt adwaita-qt6 firmware-linux-nonfree firefox fonts-crosextra-carlito fonts-crosextra-caladea firmware-misc-nonfree ttf-mscorefonts-installer rar unrar libavcodec-extra gstreamer1.0-libav gstreamer1.0-plugins-ugly gstreamer1.0-vaapi -y
 apt install winetricks wine wine32 wine64 libwine libwine:i386 fonts-wine -y
 
@@ -96,23 +96,6 @@ clear
 
 echo "Installing customizations"
 sleep 2
-
-#cp postinst.sh /tmp/postinst.sh
-#chmod +x /tmp/postinst.sh
-#cp dconf-settings.ini /tmp/dconf-settings.ini
-
-#mkdir -p /home/$sudo_user/.config/autostart
-#echo "[Desktop Entry]
-#Type=Application
-#Exec=/bin/bash /tmp/postinst.sh
-#Hidden=false
-#NoDisplay=false
-#X-GNOME-Autostart-enabled=true
-#Name[en_US]=Post Installation Script
-#Name=Post Installation Script" > /home/$sudo_user/.config/autostart/postinst.desktop
-
-plymouth-set-default-theme spinner
-sed -i 's/^GRUB_CMDLINE_LINUX_DEFAULT=.*/GRUB_CMDLINE_LINUX_DEFAULT="quiet splash splash-delay=7000"/' /etc/default/grub
 git clone https://github.com/vinceliuice/grub2-themes.git
 cd grub2-themes
 chmod +x install.sh
