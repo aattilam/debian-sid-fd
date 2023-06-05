@@ -97,6 +97,9 @@ clear
 
 echo "Installing customizations"
 sleep 2
+
+plymouth-set-default-theme spinner
+sed -i 's/^GRUB_CMDLINE_LINUX_DEFAULT=.*/GRUB_CMDLINE_LINUX_DEFAULT="quiet splash splash-delay=7000"/' /etc/default/grub
 git clone https://github.com/vinceliuice/grub2-themes.git
 cd grub2-themes
 chmod +x install.sh
@@ -127,6 +130,6 @@ done
 echo "Upgrading system and removing unnecessary packages"
 sleep 2
 apt upgrade -y; apt autoremove -y
-sudo update-initramfs -u; clear
+update-initramfs -u; clear
 
 echo "Done, please reboot your system."
