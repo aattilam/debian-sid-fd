@@ -3,42 +3,6 @@
 apt update && apt upgrade -y
 apt install curl git laptop-detect -y
 
-rm /etc/apt/sources.list
-touch /etc/apt/sources.list
-
-cat <<EOT >> /etc/apt/sources.list
-deb http://deb.debian.org/debian stable main contrib non-free
-deb-src http://deb.debian.org/debian stable main contrib non-free
-
-deb http://deb.debian.org/debian-security/ stable-security main contrib non-free
-deb-src http://deb.debian.org/debian-security/ stable-security main contrib non-free
-
-deb http://deb.debian.org/debian stable-updates main contrib non-free
-deb-src http://deb.debian.org/debian stable-updates main contrib non-free
-
-deb http://deb.debian.org/debian testing main contrib non-free non-free-firmware
-deb-src http://deb.debian.org/debian testing main contrib non-free non-free-firmware
-
-deb http://deb.debian.org/debian sid main contrib non-free non-free-firmware
-deb-src http://deb.debian.org/debian sid main contrib non-free non-free-firmware
-EOT
-
-echo "Setting repository priority"
-cat <<EOT >> /etc/apt/preferences.d/default
-package: *
-Pin: release a=sid
-Pin-Priority: 100
-
-package: *
-Pin: release a=testing
-Pin-Priority: 90
-
-package: *
-Pin: release a=stable
-Pin-Priority: 80
-EOT
-
-dpkg --add-architecture i386
 export DEBIAN_FRONTEND=noninteractive
 apt update
 apt install gnome-core libreoffice libreoffice-gnome gnome-tweaks timeshift neofetch htop gnome-boxes gnome-initial-setup dconf-cli dirmngr libglib2.0-dev software-properties-gtk flatpak network-manager gnome-software-plugin-flatpak chrome-gnome-shell intel-microcode amd64-microcode plymouth plymouth-themes git nala vlc qgnomeplatform-qt5 adwaita-qt adwaita-qt6 firmware-linux-nonfree firefox fonts-crosextra-carlito fonts-crosextra-caladea firmware-misc-nonfree ttf-mscorefonts-installer rar unrar libavcodec-extra gstreamer1.0-libav gstreamer1.0-plugins-ugly gstreamer1.0-vaapi -y
